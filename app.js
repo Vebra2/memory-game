@@ -74,7 +74,7 @@ function checkMatch() {
   const optionTwoId = cardChoosenIds[1];
   console.log(cards);
   console.log("check for match");
-  if (optionTwoId == optionTwoId) {
+  if (optionOneId == optionTwoId) {
     alert("you CLICKED THE SAME CARD");
   }
   if (cardChoosen[0] == cardChoosen[1]) {
@@ -84,6 +84,9 @@ function checkMatch() {
     cards[optionOneId].removeEventListener("click", flipCard);
     cards[optionTwoId].removeEventListener("click", flipCard);
     cardsWon.push(cardChoosen);
+  } else {
+    cards[optionOneId].setAttribute("src", "images/blank.png");
+    cards[optionTwoId].setAttribute("src", "images/blank.png");
   }
   cardChoosen = [];
   cardChoosenIds = [];
