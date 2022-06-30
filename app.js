@@ -53,8 +53,9 @@ const cardArray = [
 cardArray.sort(() => 0.5 - Math.random());
 
 const gridDisplay = document.querySelector("#grid");
-const cardChoosen = [];
-const cardChoosenIds = [];
+let cardChoosen = [];
+let cardChoosenIds = [];
+const cardsWon = [];
 
 function createBoard() {
   for (let i = 0; i < cardArray.length; i++) {
@@ -69,13 +70,23 @@ createBoard();
 
 function checkMatch() {
   const cards = document.querySelectorAll("#grid img");
+  const optionOneId = cardChoosenIds[0];
+  const optionTwoId = cardChoosenIds[1];
   console.log(cards);
   console.log("check for match");
+  if (optionTwoId == optionTwoId) {
+    alert("you CLICKED THE SAME CARD");
+  }
   if (cardChoosen[0] == cardChoosen[1]) {
     alert("you found a match");
-    cards[cardChoosenIds[0]].setAttribute("src", "images/white.png");
-    cards[cardChoosenIds[1]].setAttribute("src", "images/white.png");
+    cards[optionOneId].setAttribute("src", "images/white.png");
+    cards[optionTwoId].setAttribute("src", "images/white.png");
+    cards[optionOneId].removeEventListener("click", flipCard);
+    cards[optionTwoId].removeEventListener("click", flipCard);
+    cardsWon.push(cardChoosen);
   }
+  cardChoosen = [];
+  cardChoosenIds = [];
 }
 function flipCard() {
   const cardId = this.getAttribute("data-id");
