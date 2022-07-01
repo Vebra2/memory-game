@@ -1,7 +1,6 @@
 #grid {
-    justify-content: center;
-    width: auto;
-    height: auto;
+    width: 400px;
+    height: 300px;
     display: flex;
     flex-wrap: wrap;
 }
